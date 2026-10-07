@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Eliana Julieth 💜</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top, #35115c, #09060d 60%);
+      color: white;
+      font-family: "Courier New", monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      padding: 20px;
+    }
+
+    .contenedor {
+      width: 100%;
+      max-width: 850px;
+      text-align: center;
+    }
+
+    .titulo {
+      color: #d9a7ff;
+      margin-bottom: 25px;
+      text-shadow: 0 0 15px #9d4edd;
+      font-size: clamp(22px, 5vw, 38px);
+    }
+
+    /* SOBRE */
+    .sobre {
+      position: relative;
+      width: min(90vw, 600px);
+      height: 350px;
+      margin: auto;
+      cursor: pointer;
+      perspective: 1000px;
+    }
+
+    .sobre-cuerpo {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 270px;
+      background: linear-gradient(145deg, #17121d, #08070b);
+      border: 2px solid #9d4edd;
+      box-shadow:
+        0 0 20px #7b2cbf,
+        inset 0 0 30px #2a123e;
+      border-radius: 8px;
+      z-index: 2;
+    }
+
+    .tapa {
+      position: absolute;
+      top: 40px;
+      left: 0;
+      width: 100%;
+      height: 210px;
+      background: #120d18;
+      border: 2px solid #9d4edd;
+      clip-path: polygon(0 0, 100% 0, 50% 75%);
+      transform-origin: top;
+      transition: transform 1s ease;
+      z-index: 4;
+    }
+
+    .sobre.abierto .tapa {
+      transform: rotateX(180deg);
+      z-index: 1;
+    }
+
+    .carta {
+      position: absolute;
+      left: 5%;
+      bottom: 25px;
+      width: 90%;
+      height: 245px;
+      background: #0c0910;
+      border: 2px solid #b86cff;
+      border-radius: 10px;
+      padding: 25px;
+      z-index: 3;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 1.2s ease;
+      box-shadow: 0 0 30px #7b2cbf;
+      overflow-y: auto;
+    }
+
+    .sobre.abierto .carta {
+      transform: translateY(-90px);
+      opacity: 1;
+      z-index: 5;
+    }
+
+    .sello {
+      position: absolute;
+      top: 135px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      background: #09070d;
+      border: 3px solid #9d4edd;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #b86cff;
+      font-weight: bold;
+      font-size: 19px;
+      box-shadow: 0 0 20px #9d4edd;
+      z-index: 6;
+    }
+
+    .sello span {
+      display: block;
+      font-size: 10px;
+      margin-top: 3px;
+      letter-spacing: 3px;
+    }
+
+    .indicacion {
+      margin-top: 20px;
+      color: #dcb8ff;
+      animation: pulsar 1.5s infinite;
+    }
+
+    @keyframes pulsar {
+      0%, 100% {
+        opacity: .5;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* TULIPANES */
+    .tulipanes {
+      position: absolute;
+      left: 20px;
+      bottom: 20px;
+      display: flex;
+      gap: 10px;
+      z-index: 7;
+    }
+
+    .tulipan {
+      position: relative;
+      width: 35px;
+      height: 100px;
+    }
+
+    .flor {
+      position: absolute;
+      top: 0;
+      left: 3px;
+      width: 30px;
+      height: 35px;
+      background: #9d4edd;
+      border-radius: 50% 50% 45% 45%;
+      box-shadow: 0 0 12px #9d4edd;
+    }
+
+    .tallo {
+      position: absolute;
+      top: 30px;
+      left: 17px;
+      width: 4px;
+      height: 70px;
+      background: #4f8c55;
+    }
+
+    .hoja {
+      position: absolute;
+      top: 55px;
+      left: 2px;
+      width: 25px;
+      height: 12px;
+      background: #3f7044;
+      border-radius: 100% 0;
+      transform: rotate(-25deg);
+    }
+
+    /* CARTA */
+    .carta h2 {
+      color: #c77dff;
+      margin-bottom: 15px;
+      font-size: 25px;
+    }
+
+    .carta p {
+      color: #eee;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .cumple {
+      margin: 18px 0;
+      color: #e0aaff;
+      font-size: 22px;
+      text-shadow: 0 0 10px #9d4edd;
+    }
+
+    .firma {
+      margin-top: 20px;
+      color: #c77dff;
+    }
+
+    .corazon {
+      color: #b86cff;
+      font-size: 25px;
+    }
+
+    /* CÓDIGO DECORATIVO */
+    .codigo {
+      margin-top: 30px;
+      background: #08070b;
+      border: 1px solid #5a189a;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: left;
+      box-shadow: 0 0 20px #240046;
+      overflow-x: auto;
+    }
+
+    .codigo .morado {
+      color: #c77dff;
+    }
+
+    .codigo .rosa {
+      color: #ffb3ff;
+    }
+
+    .codigo .verde {
+      color: #9ef0a0;
+    }
+
+    .footer {
+      margin-top: 25px;
+      color: #8f72a8;
+      font-size: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .sobre {
+        height: 310px;
+      }
+
+      .carta {
+        padding: 15px;
+      }
+
+      .carta p {
+        font-size: 13px;
+      }
+
+      .tulipanes {
+        transform: scale(.75);
+        transform-origin: bottom left;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="contenedor">
+
+    <h1 class="titulo">💜 Un pequeño regalo para Eliana Julieth 💜</h1>
+
+    <div class="sobre" id="sobre" onclick="abrirSobre()">
+
+      <!-- CUERPO DEL SOBRE -->
+      <div class="sobre-cuerpo"></div>
+
+      <!-- TAPA -->
+      <div class="tapa"></div>
+
+      <!-- TULIPANES -->
+      <div class="tulipanes">
+
+        <div class="tulipan">
+          <div class="flor"></div>
+          <div class="tallo"></div>
+          <div class="hoja"></div>
+        </div>
+
+        <div class="tulipan">
+          <div class="flor"></div>
+          <div class="tallo"></div>
+          <div class="hoja"></div>
+        </div>
+
+        <div class="tulipan">
+          <div class="flor"></div>
+          <div class="tallo"></div>
+          <div class="hoja"></div>
+        </div>
+
+      </div>
+
+      <!-- SELLO BTS -->
+      <div class="sello">
+        <div>
+          ᗺTS
+          <span>BTS</span>
+        </div>
+      </div>
+
+      <!-- CARTA -->
+      <div class="carta">
+
+        <h2>💜 Para Eliana Julieth 💜</h2>
+
+        <div class="cumple">
+          🎂 ¡FELICES 17! 🎂
+        </div>
+
+        <p>
+          Hoy no es un día cualquiera...
+          hoy cumple años una persona demasiado especial para mí.
+        </p>
+
+        <br>
+
+        <p>
+          Eliana, eres mi <b>hermanita</b>, mi <b>amiga</b>
+          y mi <b>alma gemela en amistad</b>.
+          Gracias por estar conmigo, por las risas,
+          por las locuras y por todos esos momentos
+          que hacen que nuestra amistad sea única.
+        </p>
+
+        <br>
+
+        <p>
+          Deseo que estos 17 años lleguen cargados de
+          felicidad, sueños cumplidos, momentos inolvidables
+          y muchísimas razones para sonreír.
+        </p>
+
+        <br>
+
+        <p>
+          Que nunca te falten los tulipanes,
+          la música que amas, BTS, y sobre todo,
+          personas que te quieran de verdad. 💜
+        </p>
+
+        <div class="cumple">
+          ¡TE QUIERO MUCHÍSIMO! 💜
+        </div>
+
+        <p class="firma">
+          Con muchísimo cariño,<br>
+          <b>Tu hermanita, Jeysi 💜</b>
+        </p>
+
+      </div>
+
+    </div>
+
+    <p class="indicacion" id="indicacion">
+      ✨ Toca el sobre para abrir tu regalo ✨
+    </p>
+
+    <!-- CÓDIGO DECORATIVO -->
+    <div class="codigo">
+
+      <div>
+        <span class="morado">#include</span> &lt;cumpleaños.h&gt;
+      </div>
+
+      <div>
+        <span class="morado">persona</span> =
+        <span class="rosa">"Eliana Julieth"</span>;
+      </div>
+
+      <div>
+        <span class="morado">edad</span> =
+        <span class="verde">17</span>;
+      </div>
+
+      <br>
+
+      <div>
+        <span class="morado">while</span> (amistad == verdadera) {
+      </div>
+
+      <div>
+        &nbsp;&nbsp;reír();
+      </div>
+
+      <div>
+        &nbsp;&nbsp;crear_recuerdos();
+      </div>
+
+      <div>
+        &nbsp;&nbsp;apoyarnos();
+      </div>
+
+      <div>
+        &nbsp;&nbsp;escuchar_BTS();
+      </div>
+
+      <div>
+        &nbsp;&nbsp;dar_tulipanes();
+      </div>
+
+      <div>
+        }
+      </div>
+
+      <br>
+
+      <div>
+        <span class="morado">print</span>(
+        <span class="rosa">"Feliz cumpleaños, Eliana 💜"</span>);
+      </div>
+
+    </div>
+
+    <div class="footer">
+      Hecho con 💜, tulipanes y mucha amistad.
+    </div>
+
+  </div>
+
+
+  <script>
+
+    let abierto = false;
+
+    function abrirSobre() {
+
+      const sobre = document.getElementById("sobre");
+      const indicacion = document.getElementById("indicacion");
+
+      abierto = !abierto;
+
+      if (abierto) {
+
+        sobre.classList.add("abierto");
+
+        indicacion.innerHTML =
+          "💜 Para mi hermanita, mi amiga y mi alma gemela en amistad 💜";
+
+      } else {
+
+        sobre.classList.remove("abierto");
+
+        indicacion.innerHTML =
+          "✨ Toca el sobre para abrir tu regalo ✨";
+      }
+    }
+
+  </script>
+
+</body>
+</html>
